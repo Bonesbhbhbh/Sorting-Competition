@@ -4,6 +4,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 // To run on a single core, compile and then run as:
@@ -65,13 +66,31 @@ public class Group0 {
 		return input.toArray(new int[0][]);
 	}
 
-	// YOUR SORTING METHOD GOES HERE.
-	// You may call other methods and use other classes.
-	// Note: you may change the return type of the method.
-	// You would need to provide your own function that prints your sorted array to
-	// a file in the exact same format that my program outputs
 	private static void sort(int [][] toSort) {
-		Arrays.sort(toSort, new SortingCompetitionComparator());
+		Arrays.sort(bucket(toSort), new SortingCompetitionComparator());
+	}
+
+	private static int[][] Bucket(int[][] toBucket) {
+		LinkedList<Integer[]>[] round1 = new LinkedList[9];
+		LinkedList<Integer[]>[] round2 = new LinkedList[81];
+		LinkedList<Integer[]>[] round3 = new LinkedList[720];
+
+		for (int i = 0; i < toBucket.length; i++) {
+			round1[toBucket[i][0]].setNextNode(toBucket[i]);
+		}
+		for (int i = 0; i < round1.length; i++) {
+			for (Int[] item : round1){
+				round2[i*9 + item[1]].setNextNode(item);
+			}
+		}
+		for (int i = 0; i < round2.length; i++) {
+			for (Int[] item: round2){
+				round3[i*81 + item[2]].setNextNode(item);
+			}
+		}
+		// copy over linked lists to big array
+		// return array
+		return toBucket;
 	}
 
 	private static class SortingCompetitionComparator implements Comparator<int []> {
