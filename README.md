@@ -158,3 +158,19 @@ The dates for other related assignments (code review and presentations) will be 
 ## Results <a name="final"></a>
 Here is where the results of the final competition will go:
 
+// What Each Function
+// main() Method:
+
+// Coordinates everything—reads input, runs sorting, measures time, and saves the output.
+// readData() Method:
+
+// Reads the sequences from the input file and stores them as a 2D array of integers.
+// sort() Method:
+
+// Organizes sequences into buckets, sorts them, and combines them back into a sorted list.
+// SortingCompetitionComparator Class:
+
+// Handles custom sorting logic (like tie-breaking with even/odd numbers).
+// writeOutResult() Method:
+
+// Saves the sorted sequences to an output file.
