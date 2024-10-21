@@ -70,22 +70,33 @@ public class Group0 {
 		Arrays.sort(bucket(toSort), new SortingCompetitionComparator());
 	}
 
-	private static int[][] Bucket(int[][] toBucket) {
-		LinkedList<Integer[]>[] round1 = new LinkedList[9];
-		LinkedList<Integer[]>[] round2 = new LinkedList[81];
-		LinkedList<Integer[]>[] round3 = new LinkedList[720];
+	private static int[][] bucket(int[][] toBucket) {
+		int numStrings = toBucket.length;
+		// int[][] round1 = new int[numStrings][numStrings];
+		// int[][] round2 = new int[numStrings*numStrings][numStrings];
+		// int[][] round3 = new int[numStrings*numStrings*numStrings][numStrings];
+
+		// for (int i = 0; i < numStrings; i++) {
+		// 	round1
+		// }
+		LinkedList<int[]>[] round1 = new LinkedList[numStrings];
+		LinkedList<int[]>[]  round2 = new LinkedList[numStrings*numStrings];
+		LinkedList<int[]>[] round3 = new LinkedList[numStrings*numStrings*numStrings];
 
 		for (int i = 0; i < toBucket.length; i++) {
-			round1[toBucket[i][0]].setNextNode(toBucket[i]);
+			round1[toBucket[i][0]].add(toBucket[i]);
 		}
 		for (int i = 0; i < round1.length; i++) {
-			for (Int[] item : round1){
-				round2[i*9 + item[1]].setNextNode(item);
+			int[] workingNode = round1[i].getFirst();
+			while(round1[i].size() != 0){
+				round2[i*numStrings +  workingNode[1]].add(workingNode);
+				workingNode = round1[i].remove(0);
 			}
 		}
 		for (int i = 0; i < round2.length; i++) {
-			for (Int[] item: round2){
-				round3[i*81 + item[2]].setNextNode(item);
+			int[] workingNode = round2[i].getFirst();
+			while(round2[i].size() != 0){
+				round3[i*numStrings*numStrings + workingNode[2]].setNextNode(workooooo);
 			}
 		}
 		// copy over linked lists to big array
