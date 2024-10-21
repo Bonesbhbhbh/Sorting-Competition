@@ -16,37 +16,48 @@ public class Group0 {
 
 	public static void main(String[] args) throws InterruptedException, FileNotFoundException {
 
-		if (args.length < 2) {
-			System.out.println(
-					"Running tests since input and output file names not specified");
-			SortingCompetitionComparator.runComparatorTests();
-			System.exit(0);
+		// if (args.length < 2) {
+		// 	System.out.println(
+		// 			"Running tests since input and output file names not specified");
+		// 	SortingCompetitionComparator.runComparatorTests();
+		// 	System.exit(0);
+		// }
+
+		// String inputFileName = args[0];
+		// String outFileName = args[1];
+		
+		// // Uncomment to test comparator methods
+
+		// int [][] data = readData(inputFileName); // read data as strings
+		
+		// int [][] toSort = data.clone(); // clone the data
+
+		// sort(toSort); // call the sorting method once for JVM warmup
+		
+		// toSort = data.clone(); // clone again
+
+		// Thread.sleep(10); // to let other things finish before timing; adds stability of runs
+
+		// long start = System.currentTimeMillis();
+
+		// sort(toSort); // sort again
+
+		// long end = System.currentTimeMillis();
+
+		// System.out.println(end - start);
+
+		// writeOutResult(toSort, outFileName); // write out the results
+
+
+
+
+		int[][] toSort = {{1,2,3},{1},{5,4,1},{3},{0}};
+		int[][] afterSort = bucket(toSort);
+
+		for (int i = 0; i < afterSort.length; i++) {
+			System.err.println(afterSort[i]);
 		}
 
-		String inputFileName = args[0];
-		String outFileName = args[1];
-		
-		// Uncomment to test comparator methods
-
-		int [][] data = readData(inputFileName); // read data as strings
-		
-		int [][] toSort = data.clone(); // clone the data
-
-		sort(toSort); // call the sorting method once for JVM warmup
-		
-		toSort = data.clone(); // clone again
-
-		Thread.sleep(10); // to let other things finish before timing; adds stability of runs
-
-		long start = System.currentTimeMillis();
-
-		sort(toSort); // sort again
-
-		long end = System.currentTimeMillis();
-
-		System.out.println(end - start);
-
-		writeOutResult(toSort, outFileName); // write out the results
 
 	}
 
@@ -67,7 +78,8 @@ public class Group0 {
 	}
 
 	private static void sort(int [][] toSort) {
-		Arrays.sort(bucket(toSort), new SortingCompetitionComparator());
+		// Arrays.sort(bucket(toSort), new SortingCompetitionComparator());
+		bucket(toSort);
 	}
 
 	private static int[][] bucket(int[][] toBucket) {
@@ -80,27 +92,39 @@ public class Group0 {
 		// 	round1
 		// }
 		LinkedList<int[]>[] round1 = new LinkedList[numStrings];
-		LinkedList<int[]>[]  round2 = new LinkedList[numStrings*numStrings];
-		LinkedList<int[]>[] round3 = new LinkedList[numStrings*numStrings*numStrings];
+		// LinkedList<int[]>[]  round2 = new LinkedList[numStrings*numStrings];
+		// LinkedList<int[]>[] round3 = new LinkedList[numStrings*numStrings*numStrings];
 
 		for (int i = 0; i < toBucket.length; i++) {
-			round1[toBucket[i][0]].add(toBucket[i]);
+			round1[toBucket[i][0]]
+			.add(toBucket[i]);
 		}
-		for (int i = 0; i < round1.length; i++) {
-			int[] workingNode = round1[i].getFirst();
-			while(round1[i].size() != 0){
-				round2[i*numStrings +  workingNode[1]].add(workingNode);
-				workingNode = round1[i].remove(0);
-			}
-		}
-		for (int i = 0; i < round2.length; i++) {
-			int[] workingNode = round2[i].getFirst();
-			while(round2[i].size() != 0){
-				round3[i*numStrings*numStrings + workingNode[2]].setNextNode(workooooo);
-			}
-		}
+		// for (int i = 0; i < round1.length; i++) {
+		// 	// int[] workingNode = round1[i].getFirst();
+		// 	while(round1[i].size() != 0){
+		// 		int[] workingNode = round1[i].getFirst();
+		// 		round2[i*numStrings +  workingNode[1]].add(workingNode);
+		// 		round1[i].removeFirst();
+		// 	}
+		// }
+		// for (int i = 0; i < round2.length; i++) {
+			
+		// 	while(round2[i].size() != 0){
+		// 		int[] workingNode = round2[i].getFirst();
+		// 		round3[i*numStrings*numStrings + workingNode[2]].add(workingNode);
+		// 		 round2[i].removeFirst();
+		// 	}
+		// }
 		// copy over linked lists to big array
 		// return array
+		for (int i = 0; i < round1.length; i++) {
+			int pointer = 0;
+			while(round1[i+1] != null) {
+				toBucket[pointer] = round1[i].getFirst();
+				round1[i].removeFirst();
+				pointer++;
+			}
+		}
 		return toBucket;
 	}
 
