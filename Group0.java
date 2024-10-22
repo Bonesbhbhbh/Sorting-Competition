@@ -7,6 +7,8 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.Scanner;
 
+// References: https://www.programiz.com/dsa/bucket-sort
+
 // To run on a single core, compile and then run as:
 // taskset -c 0 java GroupN
 // To avoid file reading/writing connections to the server, run in /tmp 
@@ -48,16 +50,14 @@ public class Group0 {
 
 		// writeOutResult(toSort, outFileName); // write out the results
 
-
-
-
 		int[][] toSort = {{1,2,3},{1},{5,4,1},{3},{0}};
-		int[][] afterSort = bucket(toSort);
 
-		for (int i = 0; i < afterSort.length; i++) {
-			System.err.println(afterSort[i]);
+		bucket(toSort);
+
+		// this does not work, just look at it in the debug terminal
+		for (int i = 0; i < toSort.length; i++) {
+			System.out.println(toSort[i].toString());
 		}
-
 
 	}
 
@@ -78,26 +78,22 @@ public class Group0 {
 	}
 
 	private static void sort(int [][] toSort) {
-		// Arrays.sort(bucket(toSort), new SortingCompetitionComparator());
-		bucket(toSort);
+		Arrays.sort(bucket(toSort), new SortingCompetitionComparator());
+		// bucket(toSort);
 	}
 
 	private static int[][] bucket(int[][] toBucket) {
 		int numStrings = toBucket.length;
-		// int[][] round1 = new int[numStrings][numStrings];
-		// int[][] round2 = new int[numStrings*numStrings][numStrings];
-		// int[][] round3 = new int[numStrings*numStrings*numStrings][numStrings];
-
-		// for (int i = 0; i < numStrings; i++) {
-		// 	round1
-		// }
-		LinkedList<int[]>[] round1 = new LinkedList[numStrings];
+	
+		LinkedList<int[]>[] round1 = new LinkedList[numStrings + 1];
+		for (int i = 0; i < round1.length; i++) {
+			round1[i] = new LinkedList<int[]>();
+		}
 		// LinkedList<int[]>[]  round2 = new LinkedList[numStrings*numStrings];
 		// LinkedList<int[]>[] round3 = new LinkedList[numStrings*numStrings*numStrings];
 
 		for (int i = 0; i < toBucket.length; i++) {
-			round1[toBucket[i][0]]
-			.add(toBucket[i]);
+			round1[toBucket[i][0]].add(toBucket[i]);
 		}
 		// for (int i = 0; i < round1.length; i++) {
 		// 	// int[] workingNode = round1[i].getFirst();
@@ -117,12 +113,13 @@ public class Group0 {
 		// }
 		// copy over linked lists to big array
 		// return array
+		int pointer = 0;
 		for (int i = 0; i < round1.length; i++) {
-			int pointer = 0;
-			while(round1[i+1] != null) {
-				toBucket[pointer] = round1[i].getFirst();
-				round1[i].removeFirst();
-				pointer++;
+			if(round1[i].size() > 0) {
+				for (int j = 0; j < round1[i].size(); j++) {
+					toBucket[pointer] = round1[i].get(j);
+					pointer++;
+				}
 			}
 		}
 		return toBucket;
