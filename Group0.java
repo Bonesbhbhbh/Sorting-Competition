@@ -18,54 +18,54 @@ public class Group0 {
 
 	public static void main(String[] args) throws InterruptedException, FileNotFoundException {
 
-		// if (args.length < 2) {
-		// 	System.out.println(
-		// 			"Running tests since input and output file names not specified");
-		// 	SortingCompetitionComparator.runComparatorTests();
-		// 	System.exit(0);
-		// }
+		if (args.length < 2) {
+			System.out.println(
+					"Running tests since input and output file names not specified");
+			SortingCompetitionComparator.runComparatorTests();
+			System.exit(0);
+		}
 
-		// String inputFileName = args[0];
-		// String outFileName = args[1];
+		String inputFileName = args[0];
+		String outFileName = args[1];
 		
-		// // Uncomment to test comparator methods
+		// Uncomment to test comparator methods
 
-		// int [][] data = readData(inputFileName); // read data as strings
+		int [][] data = readData(inputFileName); // read data as strings
 		
-		// int [][] toSort = data.clone(); // clone the data
+		int [][] toSort = data.clone(); // clone the data
 
-		// sort(toSort); // call the sorting method once for JVM warmup
+		sort(toSort); // call the sorting method once for JVM warmup
 		
-		// toSort = data.clone(); // clone again
+		toSort = data.clone(); // clone again
 
-		// Thread.sleep(10); // to let other things finish before timing; adds stability of runs
+		Thread.sleep(10); // to let other things finish before timing; adds stability of runs
 
-		// long start = System.currentTimeMillis();
+		long start = System.currentTimeMillis();
 
-		// sort(toSort); // sort again
+		sort(toSort); // sort again
 
-		// long end = System.currentTimeMillis();
+		long end = System.currentTimeMillis();
 
-		// System.out.println(end - start);
+		System.out.println(end - start);
 
-		// writeOutResult(toSort, outFileName); // write out the results
+		writeOutResult(toSort, outFileName); // write out the results
 
 		// int[][] toSort = {{1,2,3},{1},{5,4,1},{3},{0}};
-		int[][] toSort = {
-			{1,2,3},
-			{1,3,2},
-			{2,1,3},
-			{2,3,1},
-			{3,2,1},
-			{3,1,2},
-		};
+		// int[][] toSort = {
+		// 	{1,2,3},
+		// 	{1,3,2},
+		// 	{2,1,3},
+		// 	{2,3,1},
+		// 	{3,2,1},
+		// 	{3,1,2},
+		// };
 
-		bucket(toSort);
+		// bucket(toSort);
 
-		// this does not work, just look at it in the debug terminal
-		for (int i = 0; i < toSort.length; i++) {
-			System.out.println(toSort[i].toString());
-		}
+		// // this does not work, just look at it in the debug terminal
+		// for (int i = 0; i < toSort.length; i++) {
+		// 	System.out.println(toSort[i].toString());
+		// }
 
 	}
 
@@ -111,20 +111,21 @@ public class Group0 {
 		for (int i = 0; i < toBucket.length; i++) {
 			round1[toBucket[i][0]].add(toBucket[i]);
 		}
-		for (int i = 0; i < round1.length; i++) {
+		for (int i = 1; i < round1.length; i++) {
 			while(round1[i].size() != 0){
 				int[] workingNode = round1[i].getFirst();
 				round2[i*numStrings +  workingNode[1]].add(workingNode);
 				round1[i].removeFirst();
 			}
 		}
-		// for (int i = 0; i < round2.length; i++) {
-		// 	while(round2[i].size() != 0){
-		// 		int[] workingNode = round2[i].getFirst();
-		// 		round3[i*numStrings*numStrings + workingNode[2]].add(workingNode);
-		// 		round2[i].removeFirst();
-		// 	}
-		// }
+		for (int i = 1; i < round2.length; i++) {
+			while(round2[i].size() != 0){
+				int[] workingNode = round2[i].getFirst();
+				round3[i*numStrings + workingNode[2]].add(workingNode);
+				round2[i].removeFirst();
+			}
+		}
+
 		// copy over linked lists to big array
 		// return array
 		int pointer = 0;
@@ -228,8 +229,6 @@ public class Group0 {
 			System.out.println((new SortingCompetitionComparator()).compare(arr4, arr6));
 			 
 		}
-		
-
 	}
 	
 	private static void writeOutResult(int [][] sorted, String outputFilename) throws FileNotFoundException {
@@ -242,7 +241,5 @@ public class Group0 {
 		}
 		out.close();
 	}
-	
-	
 }
 
