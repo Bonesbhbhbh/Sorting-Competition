@@ -50,7 +50,15 @@ public class Group0 {
 
 		// writeOutResult(toSort, outFileName); // write out the results
 
-		int[][] toSort = {{1,2,3},{1},{5,4,1},{3},{0}};
+		// int[][] toSort = {{1,2,3},{1},{5,4,1},{3},{0}};
+		int[][] toSort = {
+			{1,2,3},
+			{1,3,2},
+			{2,1,3},
+			{2,3,1},
+			{3,2,1},
+			{3,1,2},
+		};
 
 		bucket(toSort);
 
@@ -85,39 +93,45 @@ public class Group0 {
 	private static int[][] bucket(int[][] toBucket) {
 		int numStrings = toBucket.length;
 	
+		// makes linked list arrays for all three rounds and instantiate
 		LinkedList<int[]>[] round1 = new LinkedList[numStrings + 1];
 		for (int i = 0; i < round1.length; i++) {
 			round1[i] = new LinkedList<int[]>();
 		}
-		// LinkedList<int[]>[]  round2 = new LinkedList[numStrings*numStrings];
-		// LinkedList<int[]>[] round3 = new LinkedList[numStrings*numStrings*numStrings];
+		LinkedList<int[]>[]  round2 = new LinkedList[numStrings*numStrings];
+		for (int i = 0; i < round2.length; i++) {
+			round2[i] = new LinkedList<int[]>();
+		}
+		LinkedList<int[]>[] round3 = new LinkedList[numStrings*numStrings*numStrings];
+		for (int i = 0; i < round3.length; i++) {
+			round3[i] = new LinkedList<int[]>();
+		}
 
+		// adds each of the items to the buckets
 		for (int i = 0; i < toBucket.length; i++) {
 			round1[toBucket[i][0]].add(toBucket[i]);
 		}
-		// for (int i = 0; i < round1.length; i++) {
-		// 	// int[] workingNode = round1[i].getFirst();
-		// 	while(round1[i].size() != 0){
-		// 		int[] workingNode = round1[i].getFirst();
-		// 		round2[i*numStrings +  workingNode[1]].add(workingNode);
-		// 		round1[i].removeFirst();
-		// 	}
-		// }
+		for (int i = 0; i < round1.length; i++) {
+			while(round1[i].size() != 0){
+				int[] workingNode = round1[i].getFirst();
+				round2[i*numStrings +  workingNode[1]].add(workingNode);
+				round1[i].removeFirst();
+			}
+		}
 		// for (int i = 0; i < round2.length; i++) {
-			
 		// 	while(round2[i].size() != 0){
 		// 		int[] workingNode = round2[i].getFirst();
 		// 		round3[i*numStrings*numStrings + workingNode[2]].add(workingNode);
-		// 		 round2[i].removeFirst();
+		// 		round2[i].removeFirst();
 		// 	}
 		// }
 		// copy over linked lists to big array
 		// return array
 		int pointer = 0;
-		for (int i = 0; i < round1.length; i++) {
-			if(round1[i].size() > 0) {
-				for (int j = 0; j < round1[i].size(); j++) {
-					toBucket[pointer] = round1[i].get(j);
+		for (int i = 0; i < round2.length; i++) {
+			if(round2[i].size() > 0) {
+				for (int j = 0; j < round2[i].size(); j++) {
+					toBucket[pointer] = round2[i].get(j);
 					pointer++;
 				}
 			}
