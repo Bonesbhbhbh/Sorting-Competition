@@ -86,15 +86,27 @@ public class Group0 {
 		int numStrings = toBucket.length;
 	
 		LinkedList<int[]>[] round1 = new LinkedList[numStrings + 1];
+
+
 		for (int i = 0; i < round1.length; i++) {
 			round1[i] = new LinkedList<int[]>();
 		}
 		// LinkedList<int[]>[]  round2 = new LinkedList[numStrings*numStrings];
 		// LinkedList<int[]>[] round3 = new LinkedList[numStrings*numStrings*numStrings];
 
+		// for (int i = 0; i < toBucket.length; i++) {
+		// 	round1[toBucket[i][0]].add(toBucket[i]);
+		// }
+		
+////////////////////////////////////
 		for (int i = 0; i < toBucket.length; i++) {
-			round1[toBucket[i][0]].add(toBucket[i]);
-		}
+            if (toBucket[i].length < 2) { // adding a valid arrays to buckets
+                System.out.println("Skipping array: " + Arrays.toString(toBucket[i]));
+                continue;  // Skip arrays with fewer than 2 elements
+            }
+            round1[toBucket[i][0]].add(toBucket[i]);
+        }
+////////////////////////////////////////
 		// for (int i = 0; i < round1.length; i++) {
 		// 	// int[] workingNode = round1[i].getFirst();
 		// 	while(round1[i].size() != 0){
@@ -113,17 +125,32 @@ public class Group0 {
 		// }
 		// copy over linked lists to big array
 		// return array
-		int pointer = 0;
-		for (int i = 0; i < round1.length; i++) {
-			if(round1[i].size() > 0) {
-				for (int j = 0; j < round1[i].size(); j++) {
-					toBucket[pointer] = round1[i].get(j);
-					pointer++;
-				}
-			}
+	// 	int pointer = 0;
+	// 	for (int i = 0; i < round1.length; i++) {
+	// 		if(round1[i].size() > 0) {
+	// 			for (int j = 0; j < round1[i].size(); j++) {
+	// 				toBucket[pointer] = round1[i].get(j);
+	// 				pointer++;
+	// 			}
+	// 		}
+	// 	}
+	// 	return toBucket;
+	// }
+	//will copy the elements back to the array
+/////////////////////////////////////////////////////////
+	int pointer = 0;
+	for (int i = 0; i < round1.length; i++) {
+		for (int[] array : round1[i]) {
+			if (pointer < toBucket.length) {
+				toBucket[pointer] = array;
+				pointer++;
+			} 
 		}
-		return toBucket;
 	}
+
+	return toBucket;
+}
+////////////////////////////////////////////////////////////
 
 	private static class SortingCompetitionComparator implements Comparator<int []> {
 		
@@ -231,4 +258,6 @@ public class Group0 {
 	
 	
 }
+
+
 
