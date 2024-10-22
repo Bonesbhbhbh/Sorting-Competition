@@ -4,7 +4,10 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.Scanner;
+
+// References: https://www.programiz.com/dsa/bucket-sort
 
 // To run on a single core, compile and then run as:
 // taskset -c 0 java GroupN
@@ -15,37 +18,46 @@ public class Group0 {
 
 	public static void main(String[] args) throws InterruptedException, FileNotFoundException {
 
-		if (args.length < 2) {
-			System.out.println(
-					"Running tests since input and output file names not specified");
-			SortingCompetitionComparator.runComparatorTests();
-			System.exit(0);
+		// if (args.length < 2) {
+		// 	System.out.println(
+		// 			"Running tests since input and output file names not specified");
+		// 	SortingCompetitionComparator.runComparatorTests();
+		// 	System.exit(0);
+		// }
+
+		// String inputFileName = args[0];
+		// String outFileName = args[1];
+		
+		// // Uncomment to test comparator methods
+
+		// int [][] data = readData(inputFileName); // read data as strings
+		
+		// int [][] toSort = data.clone(); // clone the data
+
+		// sort(toSort); // call the sorting method once for JVM warmup
+		
+		// toSort = data.clone(); // clone again
+
+		// Thread.sleep(10); // to let other things finish before timing; adds stability of runs
+
+		// long start = System.currentTimeMillis();
+
+		// sort(toSort); // sort again
+
+		// long end = System.currentTimeMillis();
+
+		// System.out.println(end - start);
+
+		// writeOutResult(toSort, outFileName); // write out the results
+
+		int[][] toSort = {{1,2,3},{1},{5,4,1},{3},{0}};
+
+		bucket(toSort);
+
+		// this does not work, just look at it in the debug terminal
+		for (int i = 0; i < toSort.length; i++) {
+			System.out.println(toSort[i].toString());
 		}
-
-		String inputFileName = args[0];
-		String outFileName = args[1];
-		
-		// Uncomment to test comparator methods
-
-		int [][] data = readData(inputFileName); // read data as strings
-		
-		int [][] toSort = data.clone(); // clone the data
-
-		sort(toSort); // call the sorting method once for JVM warmup
-		
-		toSort = data.clone(); // clone again
-
-		Thread.sleep(10); // to let other things finish before timing; adds stability of runs
-
-		long start = System.currentTimeMillis();
-
-		sort(toSort); // sort again
-
-		long end = System.currentTimeMillis();
-
-		System.out.println(end - start);
-
-		writeOutResult(toSort, outFileName); // write out the results
 
 	}
 
@@ -65,13 +77,52 @@ public class Group0 {
 		return input.toArray(new int[0][]);
 	}
 
-	// YOUR SORTING METHOD GOES HERE.
-	// You may call other methods and use other classes.
-	// Note: you may change the return type of the method.
-	// You would need to provide your own function that prints your sorted array to
-	// a file in the exact same format that my program outputs
 	private static void sort(int [][] toSort) {
-		Arrays.sort(toSort, new SortingCompetitionComparator());
+		Arrays.sort(bucket(toSort), new SortingCompetitionComparator());
+		// bucket(toSort);
+	}
+
+	private static int[][] bucket(int[][] toBucket) {
+		int numStrings = toBucket.length;
+	
+		LinkedList<int[]>[] round1 = new LinkedList[numStrings + 1];
+		for (int i = 0; i < round1.length; i++) {
+			round1[i] = new LinkedList<int[]>();
+		}
+		// LinkedList<int[]>[]  round2 = new LinkedList[numStrings*numStrings];
+		// LinkedList<int[]>[] round3 = new LinkedList[numStrings*numStrings*numStrings];
+
+		for (int i = 0; i < toBucket.length; i++) {
+			round1[toBucket[i][0]].add(toBucket[i]);
+		}
+		// for (int i = 0; i < round1.length; i++) {
+		// 	// int[] workingNode = round1[i].getFirst();
+		// 	while(round1[i].size() != 0){
+		// 		int[] workingNode = round1[i].getFirst();
+		// 		round2[i*numStrings +  workingNode[1]].add(workingNode);
+		// 		round1[i].removeFirst();
+		// 	}
+		// }
+		// for (int i = 0; i < round2.length; i++) {
+			
+		// 	while(round2[i].size() != 0){
+		// 		int[] workingNode = round2[i].getFirst();
+		// 		round3[i*numStrings*numStrings + workingNode[2]].add(workingNode);
+		// 		 round2[i].removeFirst();
+		// 	}
+		// }
+		// copy over linked lists to big array
+		// return array
+		int pointer = 0;
+		for (int i = 0; i < round1.length; i++) {
+			if(round1[i].size() > 0) {
+				for (int j = 0; j < round1[i].size(); j++) {
+					toBucket[pointer] = round1[i].get(j);
+					pointer++;
+				}
+			}
+		}
+		return toBucket;
 	}
 
 	private static class SortingCompetitionComparator implements Comparator<int []> {
