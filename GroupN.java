@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.Scanner;
+import java.lang.Math;
 
 // References: https://www.programiz.com/dsa/bucket-sort
 
@@ -14,50 +15,60 @@ import java.util.Scanner;
 // To avoid file reading/writing connections to the server, run in /tmp 
 // of your lab machine.
 
-public class Group0 {
+public class GroupN {
+
+	public static int lenLongestString = 0;
 
 	public static void main(String[] args) throws InterruptedException, FileNotFoundException {
 
-		// if (args.length < 2) {
-		// 	System.out.println(
-		// 			"Running tests since input and output file names not specified");
-		// 	SortingCompetitionComparator.runComparatorTests();
-		// 	System.exit(0);
-		// }
-
-		// String inputFileName = args[0];
-		// String outFileName = args[1];
-		
-		// // Uncomment to test comparator methods
-
-		// int [][] data = readData(inputFileName); // read data as strings
-		
-		// int [][] toSort = data.clone(); // clone the data
-
-		// sort(toSort); // call the sorting method once for JVM warmup
-		
-		// toSort = data.clone(); // clone again
-
-		// Thread.sleep(10); // to let other things finish before timing; adds stability of runs
-
-		// long start = System.currentTimeMillis();
-
-		// sort(toSort); // sort again
-
-		// long end = System.currentTimeMillis();
-
-		// System.out.println(end - start);
-
-		// writeOutResult(toSort, outFileName); // write out the results
-
-		int[][] toSort = {{1,2,3},{1},{5,4,1},{3},{0}};
-
-		bucket(toSort);
-
-		// this does not work, just look at it in the debug terminal
-		for (int i = 0; i < toSort.length; i++) {
-			System.out.println(toSort[i].toString());
+		if (args.length < 2) {
+			System.out.println(
+					"Running tests since input and output file names not specified");
+			SortingCompetitionComparator.runComparatorTests();
+			System.exit(0);
 		}
+
+		String inputFileName = args[0];
+		String outFileName = args[1];
+		
+		// Uncomment to test comparator methods
+
+		int [][] data = readData(inputFileName); // read data as strings
+		
+		int [][] toSort = data.clone(); // clone the data
+
+		sort(toSort); // call the sorting method once for JVM warmup
+		
+		toSort = data.clone(); // clone again
+
+		Thread.sleep(10); // to let other things finish before timing; adds stability of runs
+
+		long start = System.currentTimeMillis();
+
+		sort(toSort); // sort again
+
+		long end = System.currentTimeMillis();
+
+		System.out.println(end - start);
+
+		writeOutResult(toSort, outFileName); // write out the results
+
+		// int[][] toSort = {{1,2,3},{1},{5,4,1},{3},{0}};
+		// int[][] toSort = {
+		// 	{1,2,3},
+		// 	{1,3,2},
+		// 	{2,1,3},
+		// 	{2,3,1},
+		// 	{3,2,1},
+		// 	{3,1,2},
+		// };
+
+		// bucket(toSort);
+
+		// // this does not work, just look at it in the debug terminal
+		// for (int i = 0; i < toSort.length; i++) {
+		// 	System.out.println(toSort[i].toString());
+		// }
 
 	}
 
@@ -65,9 +76,13 @@ public class Group0 {
 	private static int [][] readData(String inputFileName) throws FileNotFoundException {
 		ArrayList<int[]> input = new ArrayList<>();
 		Scanner in = new Scanner(new File(inputFileName));
+		// int lenLongestString = 0;
 
 		while (in.hasNext()) {
 			String str = in.next();
+			if (str.length() > lenLongestString){
+				lenLongestString = str.length();
+			}
 			input.add(Arrays.stream(str.split(",")).mapToInt(Integer::parseInt).toArray());
 		}
 
@@ -83,41 +98,71 @@ public class Group0 {
 	}
 
 	private static int[][] bucket(int[][] toBucket) {
-		int numStrings = toBucket.length;
+		long numStrings = lenLongestString; //(long) Math.sqrt(toBucket.length);
+		// long temp = numStrings;
+		// System.out.println(numStrings);
+		// System.out.println(temp*temp*temp);
 	
-		LinkedList<int[]>[] round1 = new LinkedList[numStrings + 1];
+		// makes linked list arrays for all three rounds and instantiate
+		LinkedList<int[]>[] round1 = new LinkedList[(int) (numStrings + 1)];
 		for (int i = 0; i < round1.length; i++) {
 			round1[i] = new LinkedList<int[]>();
 		}
-		// LinkedList<int[]>[]  round2 = new LinkedList[numStrings*numStrings];
-		// LinkedList<int[]>[] round3 = new LinkedList[numStrings*numStrings*numStrings];
+		LinkedList<int[]>[]  round2 = new LinkedList[(int) (numStrings)];
+		for (int i = 0; i < round2.length; i++) {
+			round2[i] = new LinkedList<int[]>();
+		}
+		LinkedList<int[]>[] round3 = new LinkedList[(int) (numStrings)];
+		for (int i = 0; i < round3.length; i++) {
+			round3[i] = new LinkedList<int[]>();
+		}
 
+		// adds each of the items to the buckets
 		for (int i = 0; i < toBucket.length; i++) {
 			round1[toBucket[i][0]].add(toBucket[i]);
 		}
-		// for (int i = 0; i < round1.length; i++) {
-		// 	// int[] workingNode = round1[i].getFirst();
-		// 	while(round1[i].size() != 0){
-		// 		int[] workingNode = round1[i].getFirst();
-		// 		round2[i*numStrings +  workingNode[1]].add(workingNode);
-		// 		round1[i].removeFirst();
-		// 	}
-		// }
-		// for (int i = 0; i < round2.length; i++) {
-			
-		// 	while(round2[i].size() != 0){
-		// 		int[] workingNode = round2[i].getFirst();
-		// 		round3[i*numStrings*numStrings + workingNode[2]].add(workingNode);
-		// 		 round2[i].removeFirst();
-		// 	}
-		// }
+		for (int i = 1; i < round1.length; i++) {
+			if(round1[i].size() != 0){
+				int[] workingNode = round1[i].getFirst();
+				if(workingNode.length > 1){
+					if(i*numStrings + workingNode[1] >= round2.length) {
+						round2[round2.length - 1].add(workingNode);
+					} else {
+						while(round1[i].size() != 0){
+							round2[(int) (i*numStrings +  workingNode[1])].add(workingNode);
+						}
+					}
+				} else {
+					round2[0].add(workingNode);
+				}
+				round1[i].removeFirst();
+			}
+		}
+		for (int i = 1; i < round2.length; i++) {
+			if(round2[i].size() != 0 ){
+				int[] workingNode = round2[i].getFirst();
+				if(workingNode.length > 2) {
+					if(i*numStrings + workingNode[2] >= round3.length) {
+						round3[round3.length - 1].add(workingNode);
+					} else {
+						while(round2[i].size() != 0){
+							round3[(int) (i*numStrings + workingNode[2])].add(workingNode);
+						}
+					}
+				} else {
+					round3[0].add(workingNode);
+				}
+				round2[i].removeFirst();
+			}
+		}
+
 		// copy over linked lists to big array
 		// return array
 		int pointer = 0;
-		for (int i = 0; i < round1.length; i++) {
-			if(round1[i].size() > 0) {
-				for (int j = 0; j < round1[i].size(); j++) {
-					toBucket[pointer] = round1[i].get(j);
+		for (int i = 0; i < round2.length; i++) {
+			if(round2[i].size() > 0) {
+				for (int j = 0; j < round2[i].size(); j++) {
+					toBucket[pointer] = round2[i].get(j);
 					pointer++;
 				}
 			}
@@ -214,8 +259,6 @@ public class Group0 {
 			System.out.println((new SortingCompetitionComparator()).compare(arr4, arr6));
 			 
 		}
-		
-
 	}
 	
 	private static void writeOutResult(int [][] sorted, String outputFilename) throws FileNotFoundException {
@@ -228,7 +271,5 @@ public class Group0 {
 		}
 		out.close();
 	}
-	
-	
 }
 
