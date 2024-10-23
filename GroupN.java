@@ -15,7 +15,7 @@ import java.lang.Math;
 // To avoid file reading/writing connections to the server, run in /tmp 
 // of your lab machine.
 
-public class Group0 {
+public class GroupN {
 
 	public static int lenLongestString = 0;
 
