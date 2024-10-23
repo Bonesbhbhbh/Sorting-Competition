@@ -17,6 +17,8 @@ import java.lang.Math;
 
 public class Group0 {
 
+	public static int lenLongestString = 0;
+
 	public static void main(String[] args) throws InterruptedException, FileNotFoundException {
 
 		if (args.length < 2) {
@@ -74,9 +76,13 @@ public class Group0 {
 	private static int [][] readData(String inputFileName) throws FileNotFoundException {
 		ArrayList<int[]> input = new ArrayList<>();
 		Scanner in = new Scanner(new File(inputFileName));
+		// int lenLongestString = 0;
 
 		while (in.hasNext()) {
 			String str = in.next();
+			if (str.length() > lenLongestString){
+				lenLongestString = str.length();
+			}
 			input.add(Arrays.stream(str.split(",")).mapToInt(Integer::parseInt).toArray());
 		}
 
@@ -92,7 +98,7 @@ public class Group0 {
 	}
 
 	private static int[][] bucket(int[][] toBucket) {
-		long numStrings = (long) Math.cbrt(toBucket.length);
+		long numStrings = lenLongestString; //(long) Math.sqrt(toBucket.length);
 		// long temp = numStrings;
 		// System.out.println(numStrings);
 		// System.out.println(temp*temp*temp);
@@ -102,11 +108,11 @@ public class Group0 {
 		for (int i = 0; i < round1.length; i++) {
 			round1[i] = new LinkedList<int[]>();
 		}
-		LinkedList<int[]>[]  round2 = new LinkedList[(int) (numStrings*numStrings)];
+		LinkedList<int[]>[]  round2 = new LinkedList[(int) (numStrings)];
 		for (int i = 0; i < round2.length; i++) {
 			round2[i] = new LinkedList<int[]>();
 		}
-		LinkedList<int[]>[] round3 = new LinkedList[(int) (numStrings*numStrings*numStrings)];
+		LinkedList<int[]>[] round3 = new LinkedList[(int) (numStrings)];
 		for (int i = 0; i < round3.length; i++) {
 			round3[i] = new LinkedList<int[]>();
 		}
@@ -116,26 +122,38 @@ public class Group0 {
 			round1[toBucket[i][0]].add(toBucket[i]);
 		}
 		for (int i = 1; i < round1.length; i++) {
-			int[] workingNode = round1[i].getFirst();
-			if (workingNode.length > 1) {
-				while(round1[i].size() != 0){
-					round2[(int) (i*numStrings +  workingNode[1])].add(workingNode);
+			if(round1[i].size() != 0){
+				int[] workingNode = round1[i].getFirst();
+				if(workingNode.length > 1){
+					if(i*numStrings + workingNode[1] >= round2.length) {
+						round2[round2.length - 1].add(workingNode);
+					} else {
+						while(round1[i].size() != 0){
+							round2[(int) (i*numStrings +  workingNode[1])].add(workingNode);
+						}
+					}
+				} else {
+					round2[0].add(workingNode);
 				}
-			} else {
-				round2[0].add(workingNode);
+				round1[i].removeFirst();
 			}
-			round1[i].removeFirst();
 		}
 		for (int i = 1; i < round2.length; i++) {
-			int[] workingNode = round2[i].getFirst();
-			if(workingNode.length > 2 ){
-				while(round2[i].size() != 0){
-					round3[(int) (i*numStrings + workingNode[2])].add(workingNode);
+			if(round2[i].size() != 0 ){
+				int[] workingNode = round2[i].getFirst();
+				if(workingNode.length > 2) {
+					if(i*numStrings + workingNode[2] >= round3.length) {
+						round3[round3.length - 1].add(workingNode);
+					} else {
+						while(round2[i].size() != 0){
+							round3[(int) (i*numStrings + workingNode[2])].add(workingNode);
+						}
+					}
+				} else {
+					round3[0].add(workingNode);
 				}
-			} else {
-				round3[0].add(workingNode);
+				round2[i].removeFirst();
 			}
-			round2[i].removeFirst();
 		}
 
 		// copy over linked lists to big array
