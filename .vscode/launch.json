@@ -1,0 +1,29 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}",
+            "args": ["temp1", "output"]
+        },
+        {
+            "type": "java",
+            "name": "DataGenerator",
+            "request": "launch",
+            "mainClass": "DataGenerator",
+            "projectName": "Sorting-Competition_f0457b6a"
+        },
+        {
+            "type": "java",
+            "name": "Group0",
+            "request": "launch",
+            "mainClass": "Group0",
+            "projectName": "Sorting-Competition_f0457b6a"
+        }
+    ]
+}
