@@ -112,18 +112,26 @@ public class Group0 {
 			round1[toBucket[i][0]].add(toBucket[i]);
 		}
 		for (int i = 1; i < round1.length; i++) {
-			while(round1[i].size() != 0){
-				int[] workingNode = round1[i].getFirst();
-				round2[i*numStrings +  workingNode[1]].add(workingNode);
-				round1[i].removeFirst();
+			int[] workingNode = round1[i].getFirst();
+			if (workingNode.length > 1) {
+				while(round1[i].size() != 0){
+					round2[i*numStrings +  workingNode[1]].add(workingNode);
+				}
+			} else {
+				round2[0].add(workingNode);
 			}
+			round1[i].removeFirst();
 		}
 		for (int i = 1; i < round2.length; i++) {
-			while(round2[i].size() != 0){
-				int[] workingNode = round2[i].getFirst();
-				round3[i*numStrings + workingNode[2]].add(workingNode);
-				round2[i].removeFirst();
+			int[] workingNode = round2[i].getFirst();
+			if(workingNode.length > 2 ){
+				while(round2[i].size() != 0){
+					round3[i*numStrings + workingNode[2]].add(workingNode);
+				}
+			} else {
+				round3[0].add(workingNode);
 			}
+			round2[i].removeFirst();
 		}
 
 		// copy over linked lists to big array
