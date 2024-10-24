@@ -1,0 +1,40 @@
+Running prelim2.txt
+
+
+ Group 0: 
+
+
+
+
+Median: 0.0
+Results of diff:
+
+
+ Group 1: 
+
+
+
+
+Median: 0.0
+Results of diff:
+
+Running prelim2.txt
+
+
+ Group 0: 
+
+
+
+
+Median: 0.0
+Results of diff:
+
+
+ Group 1: 
+
+
+
+
+Median: 0.0
+Results of diff:
+

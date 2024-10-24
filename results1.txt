@@ -1,0 +1,50 @@
+Running prelim1.txt
+
+
+ Group 0: 
+
+1
+
+1
+
+1
+
+Median: 1.0
+Results of diff:
+
+
+ Group 1: 
+
+
+
+
+Median: 0.0
+Results of diff:
+
+Running prelim1.txt
+
+
+ Group 0: 
+
+1
+
+0
+
+1
+
+Median: 1.0
+Results of diff:
+
+
+ Group 1: 
+
+1
+
+1
+
+1
+
+Median: 1.0
+Results of diff:
+
+Files outRun1Group1.txt and outRun1Group0.txt differ

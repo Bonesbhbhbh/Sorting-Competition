@@ -98,21 +98,21 @@ public class Group1 {
 	}
 
 	private static int[][] bucket(int[][] toBucket) {
-		long numStrings = lenLongestString; //(long) Math.sqrt(toBucket.length);
+		long lengthLongestString = lenLongestString; //(long) Math.sqrt(toBucket.length);
 		// long temp = numStrings;
 		// System.out.println(numStrings);
 		// System.out.println(temp*temp*temp);
 	
 		// makes linked list arrays for all three rounds and instantiate
-		LinkedList<int[]>[] round1 = new LinkedList[(int) (numStrings + 1)];
+		LinkedList<int[]>[] round1 = new LinkedList[(int) (lengthLongestString + 1)];
 		for (int i = 0; i < round1.length; i++) {
 			round1[i] = new LinkedList<int[]>();
 		}
-		LinkedList<int[]>[]  round2 = new LinkedList[(int) (numStrings)];
+		LinkedList<int[]>[]  round2 = new LinkedList[(int) (lengthLongestString)];
 		for (int i = 0; i < round2.length; i++) {
 			round2[i] = new LinkedList<int[]>();
 		}
-		LinkedList<int[]>[] round3 = new LinkedList[(int) (numStrings)];
+		LinkedList<int[]>[] round3 = new LinkedList[(int) (lengthLongestString)];
 		for (int i = 0; i < round3.length; i++) {
 			round3[i] = new LinkedList<int[]>();
 		}
@@ -125,11 +125,11 @@ public class Group1 {
 			if(round1[i].size() != 0){
 				int[] workingNode = round1[i].getFirst();
 				if(workingNode.length > 1){
-					if(i*numStrings + workingNode[1] >= round2.length) {
+					if(i*lengthLongestString + workingNode[1] >= round2.length) {
 						round2[round2.length - 1].add(workingNode);
 					} else {
 						while(round1[i].size() != 0){
-							round2[(int) (i*numStrings +  workingNode[1])].add(workingNode);
+							round2[(int) (i*lengthLongestString +  workingNode[1])].add(workingNode);
 						}
 					}
 				} else {
@@ -142,11 +142,11 @@ public class Group1 {
 			if(round2[i].size() != 0 ){
 				int[] workingNode = round2[i].getFirst();
 				if(workingNode.length > 2) {
-					if(i*numStrings + workingNode[2] >= round3.length) {
+					if(i*lengthLongestString + workingNode[2] >= round3.length) {
 						round3[round3.length - 1].add(workingNode);
 					} else {
 						while(round2[i].size() != 0){
-							round3[(int) (i*numStrings + workingNode[2])].add(workingNode);
+							round3[(int) (i*lengthLongestString + workingNode[2])].add(workingNode);
 						}
 					}
 				} else {

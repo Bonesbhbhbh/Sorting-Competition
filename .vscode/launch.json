@@ -6,10 +6,31 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Group0",
+            "request": "launch",
+            "mainClass": "Group0",
+            "projectName": "Sorting-Competition_5e9f1c1d"
+        },
+        {
+            "type": "java",
+            "name": "Group1",
+            "request": "launch",
+            "mainClass": "Group1",
+            "args": [
+                "prelim1.txt",
+                "output"
+            ],
+            "projectName": "Sorting-Competition_5e9f1c1d"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}",
-            "args": ["temp1", "output"]
+            "args": [
+                "prelim1.txt",
+                "output"
+            ]
         },
         {
             "type": "java",
