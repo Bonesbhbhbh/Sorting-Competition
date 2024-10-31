@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.LinkedList;
+import java.util.Random;
 import java.util.Scanner;
 import java.lang.Math;
 
@@ -98,76 +99,63 @@ public class Group1 {
 	}
 
 	private static int[][] bucket(int[][] toBucket) {
-		long lengthLongestString = lenLongestString; //(long) Math.sqrt(toBucket.length);
-		// long temp = numStrings;
-		// System.out.println(numStrings);
-		// System.out.println(temp*temp*temp);
+		Random rand = new Random();
+		int r1size = 400, r2size = r1size*r1size, r3size = min(r2size*r1size, 2000000);
 	
 		// makes linked list arrays for all three rounds and instantiate
-		LinkedList<int[]>[] round1 = new LinkedList[(int) (lengthLongestString + 1)];
+		LinkedList<int[]>[] round1 = new LinkedList[r1size];
 		for (int i = 0; i < round1.length; i++) {
 			round1[i] = new LinkedList<int[]>();
 		}
-		LinkedList<int[]>[]  round2 = new LinkedList[(int) (lengthLongestString)];
+		LinkedList<int[]>[]  round2 = new LinkedList[r2size];
 		for (int i = 0; i < round2.length; i++) {
 			round2[i] = new LinkedList<int[]>();
 		}
-		LinkedList<int[]>[] round3 = new LinkedList[(int) (lengthLongestString)];
+		LinkedList<int[]>[] round3 = new LinkedList[r3size];
 		for (int i = 0; i < round3.length; i++) {
 			round3[i] = new LinkedList<int[]>();
 		}
 
-		// adds each of the items to the buckets
-		for (int i = 0; i < toBucket.length; i++) {
-			round1[toBucket[i][0]].add(toBucket[i]);
+		for (int[] entry : toBucket) {
+			round1[min(entry[0],r1size)-1].addLast(entry);
 		}
-		for (int i = 1; i < round1.length; i++) {
-			if(round1[i].size() != 0){
-				int[] workingNode = round1[i].getFirst();
-				if(workingNode.length > 1){
-					if(i*lengthLongestString + workingNode[1] >= round2.length) {
-						round2[round2.length - 1].add(workingNode);
-					} else {
-						while(round1[i].size() != 0){
-							round2[(int) (i*lengthLongestString +  workingNode[1])].add(workingNode);
-						}
-					}
-				} else {
-					round2[0].add(workingNode);
-				}
-				round1[i].removeFirst();
+		for (int i = 0; i < r1size; i++) {
+			for (int[] entry : round1[i]) {
+				round2[rand.nextInt(r2size)].add(entry);
+				// if(entry.length > 1 ) {
+				// 	round2[min(entry[1]*(i+1),r2size)-1].add(entry);
+				// } else round2[0].add(entry);
+				// I would love to place these directly in toBucket
 			}
 		}
-		for (int i = 1; i < round2.length; i++) {
-			if(round2[i].size() != 0 ){
-				int[] workingNode = round2[i].getFirst();
-				if(workingNode.length > 2) {
-					if(i*lengthLongestString + workingNode[2] >= round3.length) {
-						round3[round3.length - 1].add(workingNode);
-					} else {
-						while(round2[i].size() != 0){
-							round3[(int) (i*lengthLongestString + workingNode[2])].add(workingNode);
-						}
-					}
-				} else {
-					round3[0].add(workingNode);
-				}
-				round2[i].removeFirst();
+		for (int i = 1; i < r2size; i++) {
+			for (int[] entry : round2[i]) {
+				round3[rand.nextInt(r3size)].add(entry);
+				// if(entry.length > 2 ) {
+				// 	round3[min(entry[2]*i,r3size)-1].add(entry);
+				// } else round3[1].add(entry);
+				// I would love to place these directly in toBucket
 			}
 		}
-
-		// copy over linked lists to big array
-		// return array
 		int pointer = 0;
-		for (int i = 0; i < round2.length; i++) {
-			if(round2[i].size() > 0) {
-				for (int j = 0; j < round2[i].size(); j++) {
-					toBucket[pointer] = round2[i].get(j);
+		for (int i = 0; i < r3size; i++) {
+			if(round3[i].size() > 0){
+				for (int[] entry : round3[i]) {
+					toBucket[pointer] = entry;
 					pointer++;
 				}
 			}
 		}
+		
 		return toBucket;
+	}
+
+	public static int min(int num1, int num2){
+		if(num1 > num2){
+			return num2;
+		} else {
+			return num1;
+		}
 	}
 
 	private static class SortingCompetitionComparator implements Comparator<int []> {
