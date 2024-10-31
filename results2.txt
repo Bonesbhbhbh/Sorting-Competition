@@ -38,3 +38,229 @@ Results of diff:
 Median: 0.0
 Results of diff:
 
+Running prelim2.txt
+
+
+ Group 0: 
+
+
+
+
+Median: 0.0
+Results of diff:
+
+
+ Group 1: 
+
+
+
+
+Median: 0.0
+Results of diff:
+
+Running prelim2.txt
+
+
+ Group 0: 
+
+
+
+
+Median: 0.0
+Results of diff:
+
+
+ Group 1: 
+
+
+
+
+Median: 0.0
+Results of diff:
+
+Running prelim2.txt
+
+
+ Group 0: 
+
+
+
+
+Median: 0.0
+Results of diff:
+
+
+ Group 1: 
+
+
+
+
+Median: 0.0
+Results of diff:
+
+Running prelim2.txt
+
+
+ Group 0: 
+
+
+
+
+Median: 0.0
+Results of diff:
+
+
+ Group 1: 
+
+
+
+
+Median: 0.0
+Results of diff:
+
+Running prelim2.txt
+
+
+ Group 0: 
+
+1
+
+5
+
+6
+
+Median: 5.0
+Results of diff:
+
+
+ Group 1: 
+
+
+
+
+Median: 0.0
+Results of diff:
+
+Running prelim2.txt
+
+
+ Group 0: 
+
+1
+
+1
+
+0
+
+Median: 1.0
+Results of diff:
+
+
+ Group 1: 
+
+
+
+
+Median: 0.0
+Results of diff:
+
+Running prelim2.txt
+
+
+ Group 0: 
+
+0
+
+0
+
+1
+
+Median: 0.0
+Results of diff:
+
+
+ Group 1: 
+
+
+
+
+Median: 0.0
+Results of diff:
+
+Running prelim2.txt
+
+
+ Group 0: 
+
+0
+
+6
+
+0
+
+Median: 0.0
+Results of diff:
+
+
+ Group 1: 
+
+178
+
+156
+
+210
+
+Median: 178.0
+Results of diff:
+
+Files outRun2Group1.txt and outRun2Group0.txt differ
+Running prelim2.txt
+
+
+ Group 0: 
+
+6
+
+5
+
+1
+
+Median: 5.0
+Results of diff:
+
+
+ Group 1: 
+
+
+
+
+Median: 0.0
+Results of diff:
+
+Files outRun2Group1.txt and outRun2Group0.txt differ
+Running prelim2.txt
+
+
+ Group 0: 
+
+1
+
+5
+
+5
+
+Median: 5.0
+Results of diff:
+
+
+ Group 1: 
+
+137
+
+178
+
+246
+
+Median: 178.0
+Results of diff:
+

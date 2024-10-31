@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Group1",
+            "request": "launch",
+            "mainClass": "Group1",
+            "projectName": "Sorting-Competition_65b4ce8c"
+        },
+        {
+            "type": "java",
             "name": "Group0",
             "request": "launch",
             "mainClass": "Group0",
