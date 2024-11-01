@@ -699,3 +699,361 @@ Results of diff:
 Median: 907.0
 Results of diff:
 
+Running prelim2.txt
+
+
+ Group 0: 
+
+796
+
+844
+
+787
+
+Median: 796.0
+Results of diff:
+
+
+ Group 1: 
+
+989
+
+960
+
+1234
+
+Median: 989.0
+Results of diff:
+
+Running prelim2.txt
+
+
+ Group 0: 
+
+685
+
+712
+
+674
+
+Median: 685.0
+Results of diff:
+
+
+ Group 1: 
+
+962
+
+980
+
+930
+
+Median: 962.0
+Results of diff:
+
+Running prelim2.txt
+
+
+ Group 0: 
+
+739
+
+680
+
+598
+
+Median: 680.0
+Results of diff:
+
+
+ Group 1: 
+
+1460
+
+1358
+
+1256
+
+Median: 1358.0
+Results of diff:
+
+Running prelim2.txt
+
+
+ Group 0: 
+
+729
+
+671
+
+715
+
+Median: 715.0
+Results of diff:
+
+
+ Group 1: 
+
+1280
+
+1007
+
+1015
+
+Median: 1015.0
+Results of diff:
+
+Running prelim2.txt
+
+
+ Group 0: 
+
+712
+
+624
+
+804
+
+Median: 712.0
+Results of diff:
+
+
+ Group 1: 
+
+1026
+
+Running prelim2.txt
+
+
+ Group 0: 
+
+818
+
+627
+
+665
+
+Median: 665.0
+Results of diff:
+
+
+ Group 1: 
+
+979
+
+965
+
+989
+
+Median: 979.0
+Results of diff:
+
+Running prelim2.txt
+
+
+ Group 0: 
+
+643
+
+807
+
+739
+
+Median: 739.0
+Results of diff:
+
+
+ Group 1: 
+
+1057
+
+1138
+
+972
+
+Median: 1057.0
+Results of diff:
+
+Running prelim2.txt
+
+
+ Group 0: 
+
+612
+
+766
+
+565
+
+Median: 612.0
+Results of diff:
+
+
+ Group 1: 
+
+1023
+
+941
+
+1018
+
+Median: 1018.0
+Results of diff:
+
+Running prelim2.txt
+
+
+ Group 0: 
+
+635
+
+728
+
+636
+
+Median: 636.0
+Results of diff:
+
+
+ Group 1: 
+
+968
+
+913
+
+991
+
+Median: 968.0
+Results of diff:
+
+Running prelim2.txt
+
+
+ Group 0: 
+
+651
+
+724
+
+670
+
+Median: 670.0
+Results of diff:
+
+
+ Group 1: 
+
+951
+
+996
+
+937
+
+Median: 951.0
+Results of diff:
+
+Running prelim2.txt
+
+
+ Group 0: 
+
+626
+
+705
+
+760
+
+Median: 705.0
+Results of diff:
+
+
+ Group 1: 
+
+1238
+
+1236
+
+1324
+
+Median: 1238.0
+Results of diff:
+
+Files outRun2Group1.txt and outRun2Group0.txt differ
+Running prelim2.txt
+
+
+ Group 0: 
+
+775
+
+593
+
+640
+
+Median: 640.0
+Results of diff:
+
+
+ Group 1: 
+
+951
+
+949
+
+925
+
+Median: 949.0
+Results of diff:
+
+Running prelim2.txt
+
+
+ Group 0: 
+
+754
+
+686
+
+736
+
+Median: 736.0
+Results of diff:
+
+
+ Group 1: 
+
+939
+
+847
+
+977
+
+Median: 939.0
+Results of diff:
+
+Running prelim2.txt
+
+
+ Group 0: 
+
+692
+
+654
+
+745
+
+Median: 692.0
+Results of diff:
+
+
+ Group 1: 
+
+944
+
+1032
+
+954
+
+Median: 954.0
+Results of diff:
+

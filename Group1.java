@@ -18,8 +18,6 @@ import java.lang.Math;
 
 public class Group1 {
 
-	public static int lenLongestString = 0;
-
 	public static void main(String[] args) throws InterruptedException, FileNotFoundException {
 
 		if (args.length < 2) {
@@ -54,23 +52,6 @@ public class Group1 {
 
 		writeOutResult(toSort, outFileName); // write out the results
 
-		// int[][] toSort = {{1,2,3},{1},{5,4,1},{3},{0}};
-		// int[][] toSort = {
-		// 	{1,2,3},
-		// 	{1,3,2},
-		// 	{2,1,3},
-		// 	{2,3,1},
-		// 	{3,2,1},
-		// 	{3,1,2},
-		// };
-
-		// bucket(toSort);
-
-		// // this does not work, just look at it in the debug terminal
-		// for (int i = 0; i < toSort.length; i++) {
-		// 	System.out.println(toSort[i].toString());
-		// }
-
 	}
 
 
@@ -81,9 +62,6 @@ public class Group1 {
 
 		while (in.hasNext()) {
 			String str = in.next();
-			if (str.length() > lenLongestString){
-				lenLongestString = str.length();
-			}
 			input.add(Arrays.stream(str.split(",")).mapToInt(Integer::parseInt).toArray());
 		}
 
@@ -99,8 +77,7 @@ public class Group1 {
 	}
 
 	private static int[][] bucket(int[][] toBucket) {
-		Random rand = new Random();
-		int r1size = 400, r2size = 31000/*r1size*r1size*/, r3size = Math.min(r2size*r1size, 2000000);
+		int r1size = 400, r2size = 17000/*r1size*r1size*/, r3size = Math.min(r2size*r1size, 2000000);
 	
 		// makes linked list arrays for all three rounds and instantiate
 		LinkedList<int[]>[] round1 = new LinkedList[r1size];
@@ -117,23 +94,23 @@ public class Group1 {
 		}
 
 		for (int[] entry : toBucket) {
-			round1[Math.min(entry[0],r1size)-1].addLast(entry);
+			round1[Math.min(entry[0],r1size)-1].add(entry);
 		}
+		int pointer = 0;
 		for (int i = 0; i < r1size; i++) {
 			for (int[] entry : round1[i]) {
 				if(entry.length > 1 ) {
-					round2[Math.min(entry[1]*(i+1),r2size-1)].add(entry);
-				} else round3[0].add(entry);
+					round2[Math.min(entry[1]*(i+1)/2,r2size-1)].add(entry);
+				} else toBucket[pointer++] = entry;
 			}
 		}
 		for (int i = 1; i < r2size; i++) {
 			for (int[] entry : round2[i]) {
 				if(entry.length > 2 ) {
-					round3[Math.min(entry[2]*i*(1/2),r3size-1)].add(entry);
+					round3[Math.min(entry[2]*i*(1/2),r3size-1)].add(entry);  // keep at 1/2 (tried: 1, 1/4, 3/4)
 				} else round3[1].add(entry);
 			}
 		}
-		int pointer = 0;
 		for (int i = 0; i < r3size; i++) {
 			for (int[] entry : round3[i]) {
 				toBucket[pointer++] = entry;
