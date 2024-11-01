@@ -264,3 +264,81 @@ Results of diff:
 Median: 178.0
 Results of diff:
 
+Running prelim2.txt
+
+
+ Group 0: 
+
+0
+
+5
+
+5
+
+Median: 5.0
+Results of diff:
+
+
+ Group 1: 
+
+181
+
+219
+
+197
+
+Median: 197.0
+Results of diff:
+
+Running prelim2.txt
+
+
+ Group 0: 
+
+0
+
+5
+
+5
+
+Median: 5.0
+Results of diff:
+
+
+ Group 1: 
+
+195
+
+237
+
+203
+
+Median: 203.0
+Results of diff:
+
+Running prelim2.txt
+
+
+ Group 0: 
+
+527
+
+675
+
+772
+
+Median: 675.0
+Results of diff:
+
+
+ Group 1: 
+
+1236
+
+1093
+
+1196
+
+Median: 1196.0
+Results of diff:
+
