@@ -1057,3 +1057,72 @@ Results of diff:
 Median: 954.0
 Results of diff:
 
+Running prelim2.txt
+
+
+ Group 0: 
+
+758
+
+718
+
+Running prelim2.txt
+
+
+ Group 0: 
+
+652
+
+682
+
+541
+
+Median: 652.0
+Results of diff:
+
+
+ Group 1: 
+
+1002
+
+980
+
+973
+
+Median: 980.0
+Results of diff:
+
+Running prelim2.txt
+
+
+ Group 0: 
+
+840
+
+Running prelim2.txt
+
+
+ Group 0: 
+
+591
+
+665
+
+728
+
+Median: 665.0
+Results of diff:
+
+
+ Group 1: 
+
+1040
+
+1242
+
+1167
+
+Median: 1167.0
+Results of diff:
+
+Files outRun2Group1.txt and outRun2Group0.txt differ

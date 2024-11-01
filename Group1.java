@@ -101,6 +101,13 @@ public class Group1 {
 			for (int[] entry : round1[i]) {
 				if(entry.length > 1 ) {
 					round2[Math.min(entry[1]*(i+1)/2,r2size-1)].add(entry);
+					// take our estimate for placement or put in last cell of the array (min fcn)
+					// entry[1]*(i+1)/2
+						// entry[1] : value at second spot in int[]
+						// i : location from last bucket loop, (i+1) grantees index is in bounds
+						// "/2" makes the distribution of values in the third round denser
+							// changing this number causes the output to fail, think we are doing division wrong. I hate modulo, couldn't get floor to work
+					// want to make overall number smaller so we can then shorten the array length for round2
 				} else toBucket[pointer++] = entry;
 			}
 		}
@@ -110,7 +117,7 @@ public class Group1 {
 					round3[Math.min(entry[2]*i*(1/2),r3size-1)].add(entry);  // keep at 1/2 (tried: 1, 1/4, 3/4)
 				} else round3[1].add(entry);
 			}
-		}
+		}	
 		for (int i = 0; i < r3size; i++) {
 			for (int[] entry : round3[i]) {
 				toBucket[pointer++] = entry;
