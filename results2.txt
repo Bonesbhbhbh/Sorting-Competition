@@ -342,3 +342,360 @@ Results of diff:
 Median: 1196.0
 Results of diff:
 
+Running prelim2.txt
+
+
+ Group 0: 
+
+740
+
+644
+
+634
+
+Median: 644.0
+Results of diff:
+
+
+ Group 1: 
+
+1213
+
+1237
+
+1578
+
+Median: 1237.0
+Results of diff:
+
+Running prelim2.txt
+
+
+ Group 0: 
+
+730
+
+649
+
+650
+
+Median: 650.0
+Results of diff:
+
+
+ Group 1: 
+
+1062
+
+1194
+
+1246
+
+Median: 1194.0
+Results of diff:
+
+Running prelim2.txt
+
+
+ Group 0: 
+
+806
+
+598
+
+648
+
+Median: 648.0
+Results of diff:
+
+
+ Group 1: 
+
+1331
+
+1321
+
+1198
+
+Median: 1321.0
+Results of diff:
+
+Running prelim2.txt
+
+
+ Group 0: 
+
+610
+
+732
+
+788
+
+Median: 732.0
+Results of diff:
+
+
+ Group 1: 
+
+1441
+
+1165
+
+1202
+
+Median: 1202.0
+Results of diff:
+
+Running prelim2.txt
+
+
+ Group 0: 
+
+785
+
+661
+
+646
+
+Median: 661.0
+Results of diff:
+
+
+ Group 1: 
+
+1337
+
+1425
+
+1839
+
+Median: 1425.0
+Results of diff:
+
+Running prelim2.txt
+
+
+ Group 0: 
+
+621
+
+719
+
+499
+
+Median: 621.0
+Results of diff:
+
+
+ Group 1: 
+
+1342
+
+1314
+
+1277
+
+Median: 1314.0
+Results of diff:
+
+Running prelim2.txt
+
+
+ Group 0: 
+
+761
+
+566
+
+691
+
+Median: 691.0
+Results of diff:
+
+
+ Group 1: 
+
+1253
+
+1338
+
+1050
+
+Median: 1253.0
+Results of diff:
+
+Running prelim2.txt
+
+
+ Group 0: 
+
+691
+
+762
+
+774
+
+Median: 762.0
+Results of diff:
+
+
+ Group 1: 
+
+1538
+
+1248
+
+1371
+
+Median: 1371.0
+Results of diff:
+
+Running prelim2.txt
+
+
+ Group 0: 
+
+599
+
+607
+
+642
+
+Median: 607.0
+Results of diff:
+
+
+ Group 1: 
+
+1549
+
+1443
+
+1874
+
+Median: 1549.0
+Results of diff:
+
+Running prelim2.txt
+
+
+ Group 0: 
+
+785
+
+832
+
+956
+
+Median: 832.0
+Results of diff:
+
+
+ Group 1: 
+
+Running prelim2.txt
+
+
+ Group 0: 
+
+630
+
+730
+
+756
+
+Median: 730.0
+Results of diff:
+
+
+ Group 1: 
+
+1132
+
+861
+
+973
+
+Median: 973.0
+Results of diff:
+
+Running prelim2.txt
+
+
+ Group 0: 
+
+804
+
+783
+
+800
+
+Median: 800.0
+Results of diff:
+
+
+ Group 1: 
+
+988
+
+1053
+
+1075
+
+Median: 1053.0
+Results of diff:
+
+Files outRun2Group1.txt and outRun2Group0.txt differ
+Running prelim2.txt
+
+
+ Group 0: 
+
+756
+
+803
+
+840
+
+Median: 803.0
+Results of diff:
+
+
+ Group 1: 
+
+1460
+
+1726
+
+1168
+
+Median: 1460.0
+Results of diff:
+
+Files outRun2Group1.txt and outRun2Group0.txt differ
+Running prelim2.txt
+
+
+ Group 0: 
+
+671
+
+627
+
+662
+
+Median: 662.0
+Results of diff:
+
+
+ Group 1: 
+
+907
+
+977
+
+874
+
+Median: 907.0
+Results of diff:
+

@@ -24,7 +24,7 @@
             "request": "launch",
             "mainClass": "Group1",
             "args": [
-                "prelim1.txt",
+                "prelim2.txt",
                 "output"
             ],
             "projectName": "Sorting-Competition_5e9f1c1d"
@@ -35,7 +35,7 @@
             "request": "launch",
             "mainClass": "${file}",
             "args": [
-                "prelim1.txt",
+                "prelim2.txt",
                 "output"
             ]
         },

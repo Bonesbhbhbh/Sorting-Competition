@@ -58,3 +58,55 @@ group 0 took place  1. The sum of places is 2, the sum of medians is 676.0
 
 group 1 took place  2. The sum of places is 4, the sum of medians is 1337.0
 
+group 0 took place  1. The sum of places is 2, the sum of medians is 649.0
+
+group 1 took place  2. The sum of places is 4, the sum of medians is 1390.0
+
+group 1 took place  1. The sum of places is 3, the sum of medians is 1409.0
+
+group 0 took place  2. The sum of places is 3, the sum of medians is 1000650.0
+
+group 0 took place  1. The sum of places is 2, the sum of medians is 649.0
+
+group 1 took place  2. The sum of places is 4, the sum of medians is 1529.0
+
+group 0 took place  1. The sum of places is 2, the sum of medians is 733.0
+
+group 1 took place  2. The sum of places is 4, the sum of medians is 1359.0
+
+group 0 took place  1. The sum of places is 2, the sum of medians is 666.0
+
+group 1 took place  2. The sum of places is 4, the sum of medians is 1584.0
+
+group 0 took place  1. The sum of places is 2, the sum of medians is 622.0
+
+group 1 took place  2. The sum of places is 4, the sum of medians is 1439.0
+
+group 0 took place  1. The sum of places is 2, the sum of medians is 696.0
+
+group 1 took place  2. The sum of places is 4, the sum of medians is 1459.0
+
+group 1 took place  1. The sum of places is 3, the sum of medians is 1681.0
+
+group 0 took place  2. The sum of places is 3, the sum of medians is 1000762.0
+
+group 1 took place  1. The sum of places is 3, the sum of medians is 2039.0
+
+group 0 took place  2. The sum of places is 3, the sum of medians is 1000607.0
+
+group 0 took place  1. The sum of places is 2, the sum of medians is 735.0
+
+group 1 took place  2. The sum of places is 4, the sum of medians is 1112.0
+
+group 0 took place  1. The sum of places is 2, the sum of medians is 805.0
+
+group 1 took place  2. The sum of places is 4, the sum of medians is 2000000.0
+
+group 0 took place  1. The sum of places is 2, the sum of medians is 1000803.0
+
+group 1 took place  2. The sum of places is 4, the sum of medians is 2000000.0
+
+group 0 took place  1. The sum of places is 2, the sum of medians is 667.0
+
+group 1 took place  2. The sum of places is 4, the sum of medians is 1032.0
+

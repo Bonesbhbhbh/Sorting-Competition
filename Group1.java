@@ -100,7 +100,7 @@ public class Group1 {
 
 	private static int[][] bucket(int[][] toBucket) {
 		Random rand = new Random();
-		int r1size = 400, r2size = r1size*r1size, r3size = Math.min(r2size*r1size, 2000000);
+		int r1size = 400, r2size = 31000/*r1size*r1size*/, r3size = Math.min(r2size*r1size, 2000000);
 	
 		// makes linked list arrays for all three rounds and instantiate
 		LinkedList<int[]>[] round1 = new LinkedList[r1size];
@@ -121,42 +121,26 @@ public class Group1 {
 		}
 		for (int i = 0; i < r1size; i++) {
 			for (int[] entry : round1[i]) {
-				// round2[rand.nextInt(r2size)].add(entry);
 				if(entry.length > 1 ) {
-					round2[Math.min(entry[1]*(i+1),r2size)-1].add(entry);
+					round2[Math.min(entry[1]*(i+1),r2size-1)].add(entry);
 				} else round3[0].add(entry);
-				// I would love to place these directly in toBucket
 			}
 		}
 		for (int i = 1; i < r2size; i++) {
 			for (int[] entry : round2[i]) {
-				// round3[rand.nextInt(r3size)].add(entry);
 				if(entry.length > 2 ) {
-					round3[Math.min(entry[2]*i,r3size)-1].add(entry);
+					round3[Math.min(entry[2]*i*(1/2),r3size-1)].add(entry);
 				} else round3[1].add(entry);
-				// I would love to place these directly in toBucket
 			}
 		}
 		int pointer = 0;
 		for (int i = 0; i < r3size; i++) {
-			if(round3[i].size() > 0){
-				for (int[] entry : round3[i]) {
-					toBucket[pointer] = entry;
-					pointer++;
-				}
+			for (int[] entry : round3[i]) {
+				toBucket[pointer++] = entry;
 			}
 		}
-		
 		return toBucket;
 	}
-
-	// public static int min(int num1, int num2){
-	// 	if(num1 > num2){
-	// 		return num2;
-	// 	} else {
-	// 		return num1;
-	// 	}
-	// }
 
 	private static class SortingCompetitionComparator implements Comparator<int []> {
 		
