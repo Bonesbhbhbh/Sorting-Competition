@@ -88,10 +88,6 @@ public class Group1 {
 		for (int i = 0; i < round2.length; i++) {
 			round2[i] = new LinkedList<int[]>();
 		}
-		LinkedList<int[]>[] round3 = new LinkedList[r3size];
-		for (int i = 0; i < round3.length; i++) {
-			round3[i] = new LinkedList<int[]>();
-		}
 
 		for (int[] entry : toBucket) {
 			round1[Math.min(entry[0],r1size)-1].add(entry);
@@ -111,16 +107,31 @@ public class Group1 {
 				} else toBucket[pointer++] = entry;
 			}
 		}
-		for (int i = 1; i < r2size; i++) {
-			for (int[] entry : round2[i]) {
-				if(entry.length > 2 ) {
-					round3[Math.min(entry[2]*i*(1/2),r3size-1)].add(entry);  // keep at 1/2 (tried: 1, 1/4, 3/4)
-				} else round3[1].add(entry);
+
+		if (toBucket.length >= 750000) {
+			LinkedList<int[]>[] round3 = new LinkedList[r3size];
+			for (int i = 0; i < round3.length; i++) {
+				round3[i] = new LinkedList<int[]>();
 			}
-		}	
-		for (int i = 0; i < r3size; i++) {
-			for (int[] entry : round3[i]) {
-				toBucket[pointer++] = entry;
+
+			for (int i = 1; i < r2size; i++) {
+				for (int[] entry : round2[i]) {
+					if(entry.length > 2 ) {
+						round3[Math.min(entry[2]*i*(1/2),r3size-1)].add(entry);  // keep at 1/2 (tried: 1, 1/4, 3/4)
+					} else round3[1].add(entry);
+				}
+			}
+
+			for (int i = 0; i < r3size; i++) {
+				for (int[] entry : round3[i]) {
+					toBucket[pointer++] = entry;
+				}
+			}
+		} else {
+			for (int i = 0; i < r2size; i++) {
+				for (int[] entry : round2[i]) {
+					toBucket[pointer++] = entry;
+				}
 			}
 		}
 		return toBucket;
